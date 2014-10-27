@@ -19,6 +19,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Transform ceilingCheck;								// A position marking where to check for ceilings
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 	Animator anim;										// Reference to the player's animator component.
+	bool isDead;
 
 
     void Awake()
@@ -26,6 +27,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// Setting up references.
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
+		isDead = false;
 		anim = GetComponent<Animator>();
 	}
 
@@ -43,7 +45,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
-
+		//Bo. Oct26 show debug information
+		GUIText ThisText = GameObject.FindWithTag("LogOutPut").GetComponent<GUIText>() as GUIText;
+		ThisText.text = "Role X:" + rigidbody2D.position.x + "...Role Y" + rigidbody2D.position.y + "...isDead :" + (isDead ? "dead" : "alive");
 
 		// If crouching, check to see if the character can stand up
 		if(!crouch && anim.GetBool("Crouch"))
@@ -67,7 +71,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 			// Move the character
 			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-			
+
 			// If the input is moving the player right and the player is facing left...
 			if(move > 0 && !facingRight)
 				// ... flip the player.
@@ -77,7 +81,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 		}
-
+		if (rigidbody2D.position.y < 0) {
+			//should dead
+			isDead = true;
+			rigidbody2D.position = new Vector2(rigidbody.position.x, 0); // not working...
+				}
         // If the player should jump...
         if (grounded && jump) {
             // Add a vertical force to the player.
