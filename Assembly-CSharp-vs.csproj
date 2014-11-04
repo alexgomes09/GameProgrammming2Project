@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\CoinScript.cs" />
      <Compile Include="Assets\Scripts\DebugLog.cs" />
      <Compile Include="Assets\Scripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\Scripts\PlatformerCharacter2D.cs" />

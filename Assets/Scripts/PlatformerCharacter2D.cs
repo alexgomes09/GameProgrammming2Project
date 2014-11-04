@@ -19,7 +19,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Transform ceilingCheck;								// A position marking where to check for ceilings
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 	Animator anim;										// Reference to the player's animator component.
-	bool isDead;
+	bool isDead =false;
+	private Platformer2DUserControl userControl;
 
 
     void Awake()
@@ -27,8 +28,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// Setting up references.
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
-		isDead = false;
 		anim = GetComponent<Animator>();
+		userControl = GetComponent<Platformer2DUserControl>();
 	}
 
 
@@ -37,7 +38,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
-
+		//anim.SetBool("Dead", isDead);
+		
 		// Set the vertical animation
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
 	}
@@ -55,6 +57,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			// If the character has a ceiling preventing them from standing up, keep them crouching
 			if( Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
 				crouch = true;
+
 		}
 
 		// Set whether or not the character is crouching in the animator
@@ -81,17 +84,21 @@ public class PlatformerCharacter2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 		}
-		if (rigidbody2D.position.y < 0) {
+		if (rigidbody2D.position.y < 0 && !isDead) {
 			//should dead
 			isDead = true;
-			rigidbody2D.position = new Vector2(rigidbody.position.x, 0); // not working...
-				}
-        // If the player should jump...
+			anim.SetBool("Dead", true);
+			//rigidbody2D.position = new Vector2(rigidbody.position.x, 0); // not working...
+			userControl.GameOver ();
+		}
+
+
+		// If the player should jump...
         if (grounded && jump) {
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-        }
+		}
 	}
 
 	

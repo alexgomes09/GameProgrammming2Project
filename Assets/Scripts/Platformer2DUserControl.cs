@@ -5,11 +5,15 @@ public class Platformer2DUserControl : MonoBehaviour
 {
 	private PlatformerCharacter2D character;
     private bool jump;
+	private bool restart;
+	private bool gameOver;
 
 
 	void Awake()
 	{
 		character = GetComponent<PlatformerCharacter2D>();
+		restart = false;
+		gameOver = false;
 	}
 
     void Update ()
@@ -20,7 +24,13 @@ public class Platformer2DUserControl : MonoBehaviour
 #else
 		if (Input.GetButtonDown("Jump")) jump = true;
 #endif
-
+		if (restart)
+		{
+			if (Input.GetKeyDown (KeyCode.R))
+			{
+				Application.LoadLevel (Application.loadedLevel);
+			}
+		}
     }
 
 	void FixedUpdate()
@@ -38,5 +48,15 @@ public class Platformer2DUserControl : MonoBehaviour
 
         // Reset the jump input once it has been used.
 	    jump = false;
+
+		if (gameOver)
+		{
+			restart = true;
+		}
+	}
+
+	public void GameOver ()
+	{
+		gameOver = true;
 	}
 }
