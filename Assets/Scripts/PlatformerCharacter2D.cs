@@ -22,7 +22,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool isDead =false;
 	private Platformer2DUserControl userControl;
 
-
     void Awake()
 	{
 		// Setting up references.

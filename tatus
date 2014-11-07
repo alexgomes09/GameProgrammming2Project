@@ -1,0 +1,56 @@
+[33mcommit e332c513531b649d78705c69230523eac079cb68[m
+Author: alex <alexliubo@gmail.com>
+Date:   Tue Nov 4 14:24:22 2014 -0500
+
+    collision with the coin
+    
+    collision with the coin
+
+[33mcommit d25c68bae20343b90967cbdb57ff2ef3ea7e9fed[m
+Author: alex <alexliubo@gmail.com>
+Date:   Mon Oct 27 08:49:44 2014 -0400
+
+    update scene 01
+
+[33mcommit 817c25f90bbec14239a043e4a4e1eada61795c1e[m
+Author: alex <alexliubo@gmail.com>
+Date:   Sun Oct 26 23:29:01 2014 -0400
+
+    add new state ...but not working yet with dead
+
+[33mcommit 30cbd9e4efe9fb65d09c73a2f017327e90c0b39e[m
+Author: Alex Gomes <alex_09hg@yahoo.com>
+Date:   Mon Oct 20 17:58:04 2014 -0400
+
+    Update README.md
+
+[33mcommit bcac6fa71df28ffaca75871035e9f6072818d39a[m
+Author: Alex Gomes <alex_09hg@yahoo.com>
+Date:   Mon Oct 20 17:53:41 2014 -0400
+
+    Create README.md
+
+[33mcommit e0155ae223bea9441714e8ca9fa1ee4bd4640309[m
+Author: alexgomes09 <alex_09hg@yahoo.com>
+Date:   Sun Oct 26 02:53:12 2014 -0700
+
+    Bug Fixed | Collision Works | Map recreated - Still Working
+
+[33mcommit 581c7c7f5d11e93969f780000f0d572c620401dd[m
+Author: alexgomes09 <alex_09hg@yahoo.com>
+Date:   Mon Oct 13 03:38:21 2014 -0700
+
+    Directional light and Point light with player
+
+[33mcommit 682f44ea969c8904a83cc18e6b3f134aa19b1efe[m
+Author: alexgomes09 <alex_09hg@yahoo.com>
+Date:   Sat Oct 11 15:13:02 2014 -0700
+
+    Mockup map created
+    Collision works on tile
+
+[33mcommit a8214e7bc15c8ac6d42c3981df9c2f23e7bb05e1[m
+Author: alexgomes09 <alex_09hg@yahoo.com>
+Date:   Sat Oct 11 13:43:06 2014 -0700
+
+    Initial Release

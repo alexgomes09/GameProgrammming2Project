@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlatformerCharacter2D.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlatformerCharacter2D.cs">
     <Files>
-      <File FileName="Assets/Scripts/CameraFollow.cs" Line="38" Column="16" />
-      <File FileName="Assets/Scripts/Platformer2DUserControl.cs" Line="27" Column="3" />
-      <File FileName="Assets/Scripts/PlatformerCharacter2D.cs" Line="95" Column="3" />
-      <File FileName="Assets/Scripts/Restarter.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Camera2DFollow.cs" Line="18" Column="17" />
-      <File FileName="Assets/Scripts/DebugLog.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\CameraFollow.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Platformer2DUserControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlatformerCharacter2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Restarter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Camera2DFollow.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DebugLog.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
