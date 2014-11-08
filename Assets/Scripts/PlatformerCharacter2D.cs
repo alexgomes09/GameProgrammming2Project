@@ -22,6 +22,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool isDead =false;
 	private Platformer2DUserControl userControl;
 
+    private static float playerHealth = 100;
+
     void Awake()
 	{
 		// Setting up references.
@@ -49,6 +51,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		//Bo. Oct26 show debug information
 		GUIText ThisText = GameObject.FindWithTag("LogOutPut").GetComponent<GUIText>() as GUIText;
 		ThisText.text = "Role X:" + rigidbody2D.position.x + "...Role Y" + rigidbody2D.position.y + "...isDead :" + (isDead ? "dead" : "alive");
+	    //ThisText.text = "Player Health : " + playerHealth;
 
 		// If crouching, check to see if the character can stand up
 		if(!crouch && anim.GetBool("Crouch"))
@@ -87,7 +90,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			//should dead
 			isDead = true;
 			anim.SetBool("Dead", true);
-			//rigidbody2D.position = new Vector2(rigidbody.position.x, 0); // not working...
 			userControl.GameOver ();
 		}
 
