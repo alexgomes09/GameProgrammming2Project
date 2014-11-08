@@ -45,7 +45,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
 	}
 
-
 	public void Move(float move, bool crouch, bool jump)
 	{
 		//Bo. Oct26 show debug information
@@ -113,4 +112,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    
 }

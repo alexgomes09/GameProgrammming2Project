@@ -8,6 +8,8 @@ public class Platformer2DUserControl : MonoBehaviour
 	private bool restart;
 	private bool gameOver;
 
+    public GameObject bulletPrefab;
+    public float bulletSpeed;
 
 	void Awake()
 	{
@@ -31,6 +33,8 @@ public class Platformer2DUserControl : MonoBehaviour
 				Application.LoadLevel (Application.loadedLevel);
 			}
 		}
+
+        Shoot();
     }
 
 	void FixedUpdate()
@@ -59,4 +63,13 @@ public class Platformer2DUserControl : MonoBehaviour
 	{
 		gameOver = true;
 	}
+
+    void Shoot()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Instantiate(bulletPrefab,transform.position,Quaternion.identity);
+        }
+    }
+
 }
