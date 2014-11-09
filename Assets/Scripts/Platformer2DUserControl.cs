@@ -9,7 +9,8 @@ public class Platformer2DUserControl : MonoBehaviour
 	private bool gameOver;
 
     public GameObject bulletPrefab;
-    public float bulletSpeed;
+    public float nextFire = 0.01f;
+    float timer = 0f;
 
 	void Awake()
 	{
@@ -33,7 +34,6 @@ public class Platformer2DUserControl : MonoBehaviour
 				Application.LoadLevel (Application.loadedLevel);
 			}
 		}
-
         Shoot();
     }
 
@@ -66,9 +66,12 @@ public class Platformer2DUserControl : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetMouseButton(0))
+        timer += Time.deltaTime;
+        if (Input.GetMouseButton(0) && timer > nextFire)
         {
             Instantiate(bulletPrefab,transform.position,Quaternion.identity);
+            timer = 0;
+            Physics2D.IgnoreCollision(bulletPrefab.collider2D, collider2D);
         }
     }
 
