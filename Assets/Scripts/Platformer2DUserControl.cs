@@ -35,6 +35,9 @@ public class Platformer2DUserControl : MonoBehaviour
 			}
 		}
         Shoot();
+
+		GUIText TotalTime = GameObject.FindWithTag("TotalTime").GetComponent<GUIText>() as GUIText;
+		TotalTime.text = "TotalTime : " + Time.realtimeSinceStartup.ToString ();
     }
 
 	void FixedUpdate()

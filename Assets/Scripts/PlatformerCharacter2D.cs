@@ -23,6 +23,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 	private Platformer2DUserControl userControl;
 
     private static float playerHealth = 100;
+	private static int currentLevel;
+	private static int TotalScore;
+
+
 
     void Awake()
 	{
@@ -52,6 +56,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 		ThisText.text = "Role X:" + rigidbody2D.position.x + "...Role Y" + rigidbody2D.position.y + "...isDead :" + (isDead ? "dead" : "alive");
 	    //ThisText.text = "Player Health : " + playerHealth;
 
+		GUIText LevelNum = GameObject.FindWithTag("LevelNum").GetComponent<GUIText>() as GUIText;
+		LevelNum.text = "Level : "+currentLevel.ToString ();
+		GUIText PlayerHealth = GameObject.FindWithTag("PlayerHealth").GetComponent<GUIText>() as GUIText;
+		PlayerHealth.text = "Health : " + playerHealth.ToString();
 		// If crouching, check to see if the character can stand up
 		if(!crouch && anim.GetBool("Crouch"))
 		{
