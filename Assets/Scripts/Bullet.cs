@@ -4,13 +4,16 @@ using System.Collections;
 public class Bullet : MonoBehaviour
 {
     private GameObject bulletPrefab,player;
-
+	private GameObject monster;
     private Transform moveBullet;
     private float speed = 300;
     private float mousePositionX, mousePostiionY;
 
 	void Start ()
 	{
+		Object[] monsters = GameObject.FindGameObjectsWithTag("Enemy");
+		if(monsters.Length>0)
+		monster = monsters[0] as GameObject;
 	    bulletPrefab = GameObject.Find("PlayerBullet");
 	    player = GameObject.Find("Player");
 	}
@@ -35,6 +38,21 @@ public class Bullet : MonoBehaviour
             Physics2D.IgnoreCollision(player.GetComponent<CircleCollider2D>(), collider2D);
             Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(),collider2D);
         }
-      
-    }
+		//collision with monster + bullet
+		if (other.gameObject.tag == "Enemy") {
+			Destroy(monster);
+			//add some score
+			GUIText TotalScore = GameObject.FindWithTag("TotalScore").GetComponent<GUIText>() as GUIText;
+		 	int restult;
+			//Score : 100 -> to 100
+			string[] resultArray = TotalScore.text.Split();
+			if(resultArray.Length >2)
+			{
+				if(int.TryParse(resultArray[2],out restult ))
+			   	{
+					TotalScore.text = "Score : " + (restult + 500).ToString();
+				}
+			}
+		}
+	}
 }
