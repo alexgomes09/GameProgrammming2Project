@@ -27,6 +27,7 @@ public class Platformer2DUserControl : MonoBehaviour
 #else
 		if (Input.GetButtonDown("Jump")) jump = true;
 #endif
+		//
 		if (restart)
 		{
 			if (Input.GetKeyDown (KeyCode.R))
@@ -65,6 +66,8 @@ public class Platformer2DUserControl : MonoBehaviour
 	public void GameOver ()
 	{
 		gameOver = true;
+		GUIText gameOverText = GameObject.FindWithTag("GameOver").GetComponent<GUIText>() as GUIText;
+		gameOverText.text = "Game Over, Press R to restart";
 	}
 
     void Shoot()
