@@ -2,6 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
+//enemy Movement class is being used to give "ALL" enemy same movement. which is keep patrolling and if find collision turn keep patrolling. And if Player
+// comes near by then follow player
+
 public class EnemyMovement : MonoBehaviour
 {
     public GameObject enemy,target;
@@ -13,14 +16,14 @@ public class EnemyMovement : MonoBehaviour
 
 	void Start ()
 	{
-	    enemy = GameObject.FindGameObjectWithTag("Enemy"); // gets enemy object 
 	    target = GameObject.FindGameObjectWithTag("Player"); // gets target (Player ) object
 	}
 
 	void Update ()
 	{
 	    RayCasting();
-	    Behaviour();
+        Behaviour();
+
 	}
 
     void RayCasting()
@@ -34,39 +37,42 @@ public class EnemyMovement : MonoBehaviour
 
     void Behaviour()
     {
-        range = Vector2.Distance(enemy.transform.position, target.transform.position); //gets the range between enemy and target(Player) in this case
-
-        if (range < 5)
+        if (enemy != null)
         {
-            enemy.transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
-                speed*Time.deltaTime); // if range less than 5.0f then move enemy towards target(Player)
+            range = Vector2.Distance(enemy.transform.position, target.transform.position); //gets the range between enemy and target(Player) in this case
 
-            //following code gets the target position and translate that to enemy's rotation so enemy can look at target if target range less than 5.0f
-            if (target.transform.position != transform.position)
+            if (range < 5)
             {
-                Vector3 lookPos = target.transform.position - transform.position;  
-                float angle = Mathf.Atan2(0, lookPos.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle,new Vector3(0,-180,0));
-            }
+                enemy.transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
+                    speed * Time.deltaTime); // if range less than 5.0f then move enemy towards target(Player)
 
-        }else if (range > 5)
-        {
-            //if range is larger than 5 then keep enemy moving
-            if (collisionDetected)
-            {
-                // if enemy detects collision with world's space (EdgeCollision/Box Collision) then rotate enemy to opposite 
-                //degre and keep enemy moving
-                transform.Rotate(0, -180f, 0); 
-                enemy.transform.position -= transform.right * speed * Time.deltaTime;
+                //following code gets the target position and translate that to enemy's rotation so enemy can look at target if target range less than 5.0f
+                if (target.transform.position != transform.position)
+                {
+                    Vector3 lookPos = target.transform.position - transform.position;
+                    float angle = Mathf.Atan2(0, lookPos.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0, -180, 0));
+                }
+
             }
-            else
+            else if (range > 5)
             {
-                // otherwise rotate enemy to opposite degree and keep enemy moving.
-                transform.Rotate(0, 0, 0);
-                enemy.transform.position += transform.right * speed * Time.deltaTime;
-            }    
+                //if range is larger than 5 then keep enemy moving
+                if (collisionDetected)
+                {
+                    // if enemy detects collision with world's space (EdgeCollision/Box Collision) then rotate enemy to opposite 
+                    //degre and keep enemy moving
+                    transform.Rotate(0, -180f, 0);
+                    enemy.transform.position -= transform.right * speed * Time.deltaTime;
+                }
+                else
+                {
+                    // otherwise rotate enemy to opposite degree and keep enemy moving.
+                    transform.Rotate(0, 0, 0);
+                    enemy.transform.position += transform.right * speed * Time.deltaTime;
+                }
+            }
         }
-        
     }
 
 }
