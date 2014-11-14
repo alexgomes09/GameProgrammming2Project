@@ -26,7 +26,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	private static int currentLevel;
 	private static int TotalScore;
 
-
+    public AudioClip jumpSound;
 
     void Awake()
 	{
@@ -66,7 +66,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			// If the character has a ceiling preventing them from standing up, keep them crouching
 			if( Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
 				crouch = true;
-
 		}
 
 		// Set whether or not the character is crouching in the animator
@@ -106,7 +105,8 @@ public class PlatformerCharacter2D : MonoBehaviour
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-		}
+            audio.PlayOneShot(jumpSound);
+        }
 	}
 
 	

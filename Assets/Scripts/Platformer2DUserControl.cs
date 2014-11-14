@@ -12,7 +12,8 @@ public class Platformer2DUserControl : MonoBehaviour
     public float nextFire = 0.01f;
     float timer = 0f;
 
-	void Awake()
+
+    void Awake()
 	{
 		character = GetComponent<PlatformerCharacter2D>();
 		restart = false;
@@ -25,7 +26,9 @@ public class Platformer2DUserControl : MonoBehaviour
 #if CROSS_PLATFORM_INPUT
         if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
 #else
-		if (Input.GetButtonDown("Jump")) jump = true;
+        if (Input.GetButtonDown("Jump"))
+            jump = true; 
+        
 #endif
 		//
 		if (restart)
