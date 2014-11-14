@@ -121,5 +121,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject == GameObject.Find("EndOfLevel1"))
+        {
+            Application.LoadLevel("level2");
+        }
+    }
+
     
 }
