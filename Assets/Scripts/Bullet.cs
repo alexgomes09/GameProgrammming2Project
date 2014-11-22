@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-    private GameObject bulletPrefab,player;
+    private GameObject player;
 	private GameObject monster;
     private Transform moveBullet;
     private float speed = 300;
@@ -14,7 +14,6 @@ public class Bullet : MonoBehaviour
 		Object[] monsters = GameObject.FindGameObjectsWithTag("Enemy");
 		if(monsters.Length>0)
 		monster = monsters[0] as GameObject;
-	    bulletPrefab = GameObject.Find("PlayerBullet");
 	    player = GameObject.Find("Player");
 	}
 	
