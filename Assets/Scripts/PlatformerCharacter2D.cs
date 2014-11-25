@@ -92,11 +92,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 		}
-		if (rigidbody2D.position.y < 0 && !isDead) {
+		if (rigidbody2D.position.y < -2.0f && !isDead) {
 			//should dead
-			//isDead = true;
-			//anim.SetBool("Dead", true);
-			//userControl.GameOver ();
+			isDead = true;
+			anim.SetBool("Dead", true);
+			userControl.GameOver ();
 		}
 
 
