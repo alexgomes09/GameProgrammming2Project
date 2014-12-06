@@ -34,7 +34,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
 		anim = GetComponent<Animator>();
-		userControl = GetComponent<Platformer2DUserControl>();
+		//userControl = GetComponent<Platformer2DUserControl>();
 	}
 
 
@@ -68,7 +68,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 				crouch = true;
 		}
 
-
 		// Set whether or not the character is crouching in the animator
 		anim.SetBool("Crouch", crouch);
 
@@ -93,12 +92,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 		}
-		if (rigidbody2D.position.y < -3.0f && !isDead) {
+		if (rigidbody2D.position.y < 0 && !isDead) {
 			//should dead
-			isDead = true;
-			anim.SetBool("Dead", true);
-		
-			userControl.GameOver();
+			//isDead = true;
+			//anim.SetBool("Dead", true);
+			//userControl.GameOver ();
 		}
 
 

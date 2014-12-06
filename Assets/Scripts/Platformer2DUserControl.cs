@@ -70,11 +70,8 @@ public class Platformer2DUserControl : MonoBehaviour
 	{
 		gameOver = true;
 		GUIText gameOverText = GameObject.FindWithTag("GameOver").GetComponent<GUIText>() as GUIText;
-	//	gameOverText.text = "Game Over, Press R to restart";
-		gameObject.AddComponent<GameOverScript>();
+		gameOverText.text = "Game Over, Press R to restart";
 	}
-
-
 
     void Shoot()
     {

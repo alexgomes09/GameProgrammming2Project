@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Cloud_Swan : MonoBehaviour
 {
     private GameObject player;
-    private GameObject swan,cloud,cloud2,cloud3,rocket;
+    public GameObject rocket;
+    private GameObject swan,cloud,cloud2,cloud3;
     private const float cloudSpeed = 0.8f;
     private const float swanSpeed = 0.8f;
-    private Vector2 screenPositionforSwan;  
+    private Vector2 screenPositionforSwan;
+    private bool dropBomb;
 
     void Start()
 	{
@@ -15,9 +18,7 @@ public class Cloud_Swan : MonoBehaviour
         cloud = GameObject.Find("cloud");
         cloud2 = GameObject.Find("cloud2");
         cloud3 = GameObject.Find("cloud3");
-
-        screenPositionforSwan = Camera.main.WorldToScreenPoint(swan.transform.position);
-        rocket = Instantiate(Resources.Load("rocket"),screenPositionforSwan,Quaternion.identity) as GameObject;
+        rocket = GameObject.Find("rocket");
 	}
 
     private void Update()
@@ -54,24 +55,31 @@ public class Cloud_Swan : MonoBehaviour
 
     void MoveSwan()
     {
+        screenPositionforSwan = Camera.main.WorldToScreenPoint(swan.transform.position);
         swan.transform.Translate(-Vector2.right * Time.deltaTime * swanSpeed);
         
         if (screenPositionforSwan.x < 0) 
         {
             swan.transform.position = new Vector2(player.transform.position.x + 15, player.transform.position.y + 6.5f);
+			rocket.SetActive(true);
         }
+
+        
     }
 
     void MoveRocket()
     {
-        rocket.transform.position = rocket.transform.position*0.8f*Time.deltaTime;
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.name == "rocket")
+        if (swan.transform.position.x <= player.transform.position.x)
         {
-            rocket.SetActive(false);
+			if(rocket != null){
+	            rocket.rigidbody2D.AddForce(-Vector2.up*2.0f, ForceMode2D.Force);
+			}
+        }
+        else
+        {
+            rocket.transform.position = swan.transform.position;    
         }
     }
+
+
 }
