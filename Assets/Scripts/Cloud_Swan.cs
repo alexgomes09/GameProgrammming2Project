@@ -63,8 +63,6 @@ public class Cloud_Swan : MonoBehaviour
             swan.transform.position = new Vector2(player.transform.position.x + 15, player.transform.position.y + 6.5f);
 			rocket.SetActive(true);
         }
-
-        
     }
 
     void MoveRocket()
@@ -72,7 +70,7 @@ public class Cloud_Swan : MonoBehaviour
         if (swan.transform.position.x <= player.transform.position.x)
         {
 			if(rocket != null){
-	            rocket.rigidbody2D.AddForce(-Vector2.up*2.0f, ForceMode2D.Force);
+	            rocket.rigidbody2D.AddForce(-Vector2.up*2.0f, ForceMode2D.Impulse);
 			}
         }
         else
