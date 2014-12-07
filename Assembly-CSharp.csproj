@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\Scripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\Scripts\Restarter.cs" />
+     <Compile Include="Assets\Scripts\fox.cs" />
      <Compile Include="Assets\Scripts\rocket.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
