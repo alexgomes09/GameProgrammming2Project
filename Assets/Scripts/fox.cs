@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Fox : MonoBehaviour
 {
-//
+    private GameObject bomb;
     private GameObject player;
     private float foxSpeed = 1f;
+    private float time = 2; 
 
 	void Start ()
 	{
 	    player = GameObject.Find("Player");
+	    bomb = GameObject.Find("bomb");
 	}
 	
 	void Update ()
@@ -23,9 +25,21 @@ public class Fox : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 10)
+        if (distance <= 20)
         {
             gameObject.transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x,transform.position.y), foxSpeed * Time.deltaTime);
+
+            
+            time -= 0.02f;
+            if (time <= 0)
+            {
+                bomb.rigidbody2D.AddForce(player.transform.position,ForceMode2D.Force);
+            }
+            else
+            {
+                bomb.transform.position = transform.position;
+            }
+
 
             if (player.transform.position != transform.position)
             {
@@ -34,9 +48,14 @@ public class Fox : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0, -180, 0));
             }
         }
-        else if (distance > 5)
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == GameObject.Find("fox").name)
         {
-            
+            Physics2D.IgnoreCollision(bomb.collider2D,gameObject.collider2D);
         }
     }
 }
