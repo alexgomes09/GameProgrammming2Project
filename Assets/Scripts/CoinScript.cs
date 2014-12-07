@@ -25,7 +25,7 @@ public class CoinScript : MonoBehaviour {
 
 		}
 
-		GUIText TotalScore = GameObject.FindWithTag("TotalScore").GetComponent<GUIText>() as GUIText;
-		TotalScore.text = "Score : " + currentScore.ToString ();
+		//GUIText TotalScore = GameObject.FindWithTag("TotalScore").GetComponent<GUIText>() as GUIText;
+		//TotalScore.text = "Score : " + currentScore.ToString ();
 	}
 }
